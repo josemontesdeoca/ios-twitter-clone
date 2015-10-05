@@ -13,9 +13,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tweetTableView: UITableView!
     
     var tweets: [Tweet]?
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Pull to refresh
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tweetTableView.insertSubview(refreshControl, atIndex: 0)
         
         tweetTableView.delegate = self
         tweetTableView.dataSource = self
@@ -26,6 +32,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.instance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
             self.tweetTableView.reloadData()
+        }
+    }
+    
+    func onRefresh() {
+        // Do any additional setup after loading the view.
+        TwitterClient.instance.homeTimelineWithParams(nil) { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tweetTableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
 
