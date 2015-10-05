@@ -12,11 +12,33 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Subscribe to the event
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+        
+        if User.currentUser != nil {
+            // Got to logged in screen
+            print("Current User detected: \(User.currentUser?.name)")
+            
+            let vc = storyboard.instantiateViewControllerWithIdentifier("NCTweetsViewController") as UIViewController
+            
+            window?.rootViewController = vc
+        }
+        
         return true
+    }
+    
+    
+    func userDidLogout() {
+        // Reset the initial ViewController
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        // Function that gets called when browser redirects a url from our define URI Scheme
+        
+        TwitterClient.instance.openURL(url)
+        
+        return true
+    }
 
 }
 

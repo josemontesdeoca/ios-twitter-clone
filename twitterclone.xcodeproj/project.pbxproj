@@ -7,20 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431761191BC1A4E5008F60D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431761181BC1A4E5008F60D2 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		4317611B1BC1A54F008F60D2 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317611A1BC1A54F008F60D2 /* Tweet.swift */; settings = {ASSET_TAGS = (); }; };
 		433C5EF81BBE388F004980AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C5EF71BBE388F004980AD /* AppDelegate.swift */; };
 		433C5EFD1BBE388F004980AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C5EFB1BBE388F004980AD /* Main.storyboard */; };
 		433C5EFF1BBE388F004980AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433C5EFE1BBE388F004980AD /* Assets.xcassets */; };
 		433C5F021BBE388F004980AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C5F001BBE388F004980AD /* LaunchScreen.storyboard */; };
+		43C046531BC1B872008FBF99 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C046521BC1B872008FBF99 /* TweetsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		43DEF7C91BBE44B900DAE85C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DEF7C81BBE44B900DAE85C /* TwitterClient.swift */; settings = {ASSET_TAGS = (); }; };
+		43DEF7CB1BBE454300DAE85C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F8E7160FC3F10B176744E480 /* libPods-twitterclone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E88BCA753474D094AC27880 /* libPods-twitterclone.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		431761181BC1A4E5008F60D2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4317611A1BC1A54F008F60D2 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		433C5EF41BBE388F004980AD /* twitterclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitterclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433C5EF71BBE388F004980AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		433C5EFC1BBE388F004980AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		433C5EFE1BBE388F004980AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		433C5F011BBE388F004980AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		433C5F031BBE388F004980AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43C046521BC1B872008FBF99 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		43DEF7C41BBE3EE600DAE85C /* twitterclone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "twitterclone-Bridging-Header.h"; sourceTree = "<group>"; };
+		43DEF7C81BBE44B900DAE85C /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8E88BCA753474D094AC27880 /* libPods-twitterclone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twitterclone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF8227ADCF792D105D46F61 /* Pods-twitterclone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitterclone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitterclone/Pods-twitterclone.debug.xcconfig"; sourceTree = "<group>"; };
 		CD69D7DFA591E79A5AF0A956 /* Pods-twitterclone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitterclone.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitterclone/Pods-twitterclone.release.xcconfig"; sourceTree = "<group>"; };
@@ -38,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		431761171BC1A4C9008F60D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				431761181BC1A4E5008F60D2 /* User.swift */,
+				4317611A1BC1A54F008F60D2 /* Tweet.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		433C5EEB1BBE388F004980AD = {
 			isa = PBXGroup;
 			children = (
@@ -45,6 +65,7 @@
 				433C5EF51BBE388F004980AD /* Products */,
 				D841EFAECDFE75F9C9A9FB87 /* Pods */,
 				FE3A0187E0B5BE6978EF990F /* Frameworks */,
+				43DEF7C41BBE3EE600DAE85C /* twitterclone-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,13 +80,25 @@
 		433C5EF61BBE388F004980AD /* twitterclone */ = {
 			isa = PBXGroup;
 			children = (
+				431761171BC1A4C9008F60D2 /* Models */,
+				43DEF7C71BBE3F4800DAE85C /* API */,
 				433C5EF71BBE388F004980AD /* AppDelegate.swift */,
 				433C5EFB1BBE388F004980AD /* Main.storyboard */,
 				433C5EFE1BBE388F004980AD /* Assets.xcassets */,
 				433C5F001BBE388F004980AD /* LaunchScreen.storyboard */,
 				433C5F031BBE388F004980AD /* Info.plist */,
+				43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */,
+				43C046521BC1B872008FBF99 /* TweetsViewController.swift */,
 			);
 			path = twitterclone;
+			sourceTree = "<group>";
+		};
+		43DEF7C71BBE3F4800DAE85C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				43DEF7C81BBE44B900DAE85C /* TwitterClient.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		D841EFAECDFE75F9C9A9FB87 /* Pods */ = {
@@ -113,6 +146,7 @@
 		433C5EEC1BBE388F004980AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "JoseOnline!";
 				TargetAttributes = {
@@ -191,6 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431761191BC1A4E5008F60D2 /* User.swift in Sources */,
+				4317611B1BC1A54F008F60D2 /* Tweet.swift in Sources */,
+				43C046531BC1B872008FBF99 /* TweetsViewController.swift in Sources */,
+				43DEF7CB1BBE454300DAE85C /* LoginViewController.swift in Sources */,
+				43DEF7C91BBE44B900DAE85C /* TwitterClient.swift in Sources */,
 				433C5EF81BBE388F004980AD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,11 +344,14 @@
 			baseConfigurationReference = 8EF8227ADCF792D105D46F61 /* Pods-twitterclone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = twitterclone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseonline.ios.twitterclone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "twitterclone-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -318,11 +360,13 @@
 			baseConfigurationReference = CD69D7DFA591E79A5AF0A956 /* Pods-twitterclone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = twitterclone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseonline.ios.twitterclone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "twitterclone-Bridging-Header.h";
 			};
 			name = Release;
 		};
