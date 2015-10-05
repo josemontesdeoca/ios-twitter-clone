@@ -27,7 +27,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         consumerSecret: twitterConsumerSecret)
     
     func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
-        GET(twitterHomeTimelineUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        var parameters: [String : AnyObject] = ["count": 20]
+        
+        // TODO merge params into parameters
+        
+        GET(twitterHomeTimelineUrl, parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
             completion(tweets: tweets, error: nil)
         }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in

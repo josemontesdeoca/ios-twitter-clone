@@ -14,6 +14,7 @@
 		433C5EFF1BBE388F004980AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433C5EFE1BBE388F004980AD /* Assets.xcassets */; };
 		433C5F021BBE388F004980AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C5F001BBE388F004980AD /* LaunchScreen.storyboard */; };
 		43C046531BC1B872008FBF99 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C046521BC1B872008FBF99 /* TweetsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		43C046561BC2053B008FBF99 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C046551BC2053B008FBF99 /* TweetCell.swift */; settings = {ASSET_TAGS = (); }; };
 		43DEF7C91BBE44B900DAE85C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DEF7C81BBE44B900DAE85C /* TwitterClient.swift */; settings = {ASSET_TAGS = (); }; };
 		43DEF7CB1BBE454300DAE85C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F8E7160FC3F10B176744E480 /* libPods-twitterclone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E88BCA753474D094AC27880 /* libPods-twitterclone.a */; };
@@ -29,6 +30,7 @@
 		433C5F011BBE388F004980AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		433C5F031BBE388F004980AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C046521BC1B872008FBF99 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		43C046551BC2053B008FBF99 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		43DEF7C41BBE3EE600DAE85C /* twitterclone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "twitterclone-Bridging-Header.h"; sourceTree = "<group>"; };
 		43DEF7C81BBE44B900DAE85C /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		433C5EF61BBE388F004980AD /* twitterclone */ = {
 			isa = PBXGroup;
 			children = (
+				43C046571BC23F7C008FBF99 /* View Controllers */,
+				43C046541BC20519008FBF99 /* Views */,
 				431761171BC1A4C9008F60D2 /* Models */,
 				43DEF7C71BBE3F4800DAE85C /* API */,
 				433C5EF71BBE388F004980AD /* AppDelegate.swift */,
@@ -87,10 +91,25 @@
 				433C5EFE1BBE388F004980AD /* Assets.xcassets */,
 				433C5F001BBE388F004980AD /* LaunchScreen.storyboard */,
 				433C5F031BBE388F004980AD /* Info.plist */,
+			);
+			path = twitterclone;
+			sourceTree = "<group>";
+		};
+		43C046541BC20519008FBF99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43C046551BC2053B008FBF99 /* TweetCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		43C046571BC23F7C008FBF99 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				43DEF7CA1BBE454300DAE85C /* LoginViewController.swift */,
 				43C046521BC1B872008FBF99 /* TweetsViewController.swift */,
 			);
-			path = twitterclone;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		43DEF7C71BBE3F4800DAE85C /* API */ = {
@@ -226,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				431761191BC1A4E5008F60D2 /* User.swift in Sources */,
+				43C046561BC2053B008FBF99 /* TweetCell.swift in Sources */,
 				4317611B1BC1A54F008F60D2 /* Tweet.swift in Sources */,
 				43C046531BC1B872008FBF99 /* TweetsViewController.swift in Sources */,
 				43DEF7CB1BBE454300DAE85C /* LoginViewController.swift in Sources */,
