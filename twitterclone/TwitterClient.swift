@@ -18,6 +18,7 @@ private let twitterAccessTokenUrl = "oauth/access_token"
 private let twitterAuthenticateUrl = "https://api.twitter.com/oauth/authenticate?oauth_token="
 private let twitterVerifyCredentialsUrl = "1.1/account/verify_credentials.json"
 private let twitterHomeTimelineUrl = "1.1/statuses/home_timeline.json"
+private let twitterTweetUrl = "1.1/statuses/update.json"
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
     
@@ -25,20 +26,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     
     static let instance = TwitterClient(baseURL: twitterBaseUrl, consumerKey: twitterConsumerKey,
         consumerSecret: twitterConsumerSecret)
-    
-    func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
-        var parameters: [String : AnyObject] = ["count": 20]
-        
-        // TODO merge params into parameters
-        
-        GET(twitterHomeTimelineUrl, parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-            completion(tweets: tweets, error: nil)
-        }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            print("Error getting home timeline!")
-            completion(tweets: nil, error: error)
-        })
-    }
     
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
@@ -86,6 +73,32 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }) { (error: NSError!) -> Void in
             print("Failed to receive access token")
             self.loginCompletion?(user: nil, error: error)
+        }
+    }
+    
+    func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        let parameters: [String : AnyObject] = ["count": 20]
+        
+        // TODO merge params into parameters
+        
+        GET(twitterHomeTimelineUrl, parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            completion(tweets: tweets, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                print("Error getting home timeline!")
+                completion(tweets: nil, error: error)
+        })
+    }
+    
+    func tweetWithParams(status: String, completion:(tweet: Tweet?, error: NSError?) -> ()) {
+        let params = ["status": status]
+        
+        POST(twitterTweetUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                print("Error tweeting!")
+                completion(tweet: nil, error: error)
         }
     }
 }
