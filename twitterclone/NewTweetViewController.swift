@@ -26,15 +26,13 @@ class NewTweetViewController: UIViewController {
         
         let user: User = User.currentUser!
 
-        // Do any additional setup after loading the view.
-        userImageView.setImageWithURL(NSURL(string: user.profileImageUrl!))
+        userImageView.setImageWithURL(NSURL(string: user.biggerProfileImageUrl!))
         nameLabel.text = user.name!
         usernameLabel.text = user.screenName!
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onCancel(sender: AnyObject) {
@@ -59,15 +57,4 @@ class NewTweetViewController: UIViewController {
             print("Empty message")
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

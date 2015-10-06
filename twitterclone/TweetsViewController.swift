@@ -28,7 +28,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tweetTableView.rowHeight = UITableViewAutomaticDimension
         tweetTableView.estimatedRowHeight = 100
 
-        // Do any additional setup after loading the view.
         TwitterClient.instance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
             self.tweetTableView.reloadData()
@@ -69,25 +68,38 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return tweetCell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tweetTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.view.endEditing(true)
+    }
+    
     func newTweetViewController(newTweetViewControlleer: NewTweetViewController, didTweet tweet: Tweet) {
-        print("Handling delegate method from newTweetViewController: \(tweet)")
         tweets?.insert(tweet, atIndex: 0)
         tweetTableView.reloadData()
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
-        let navigationController = segue.destinationViewController as! UINavigationController
+        if segue.identifier == "TweetDetailSegue" {
+            let cell = sender as! UITableViewCell
+            let indexPath = tweetTableView.indexPathForCell(cell)!
+            
+            let tweet = tweets![indexPath.row]
+            
+            let tweetDetailViewController = segue.destinationViewController as! TweetDetailViewController
+            
+            tweetDetailViewController.tweet = tweet
+            tweetDetailViewController.hidesBottomBarWhenPushed = true
+        } else {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            
+            // NewTweetViewController is the top view controller of the naviagtion controller
+            let newTweetViewController = navigationController.topViewController as! NewTweetViewController
+            
+            newTweetViewController.delegate = self
+        }
         
-        // NewTweetViewController is the top view controller of the naviagtion controller
-        let newTweetViewController = navigationController.topViewController as! NewTweetViewController
-        
-        newTweetViewController.delegate = self
     }
 
 }

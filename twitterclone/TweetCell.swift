@@ -21,9 +21,9 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             let user: User = tweet.user!
-            userImageView.setImageWithURL(NSURL(string: user.profileImageUrl!))
+            userImageView.setImageWithURL(NSURL(string: user.biggerProfileImageUrl!))
             nameLabel.text = user.name
-            usernameLabel.text = "@\(user.screenName!)"
+            usernameLabel.text = user.atScreenName!
             tweetLabel.text = tweet.text
             retweetLabel.text = tweet.retweetCount! > 0 ? "\(tweet.retweetCount!)" : ""
             favoriteLabel.text = tweet.favoriteCount! > 0 ? "\(tweet.favoriteCount!)" : ""

@@ -20,6 +20,18 @@ class User: NSObject {
     var tagline: String?
     var dictionary: NSDictionary
     
+    var biggerProfileImageUrl: String? {
+        get {
+            return profileImageUrl?.stringByReplacingOccurrencesOfString("_normal", withString: "_bigger")
+        }
+    }
+    
+    var atScreenName: String? {
+        get {
+            return "@\(screenName!)"
+        }
+    }
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
