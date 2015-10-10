@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetDetailViewController: UIViewController {
+class TweetDetailViewController: UIViewController, NewTweetViewControllerDelegate {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -49,7 +49,15 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func didTapReply(sender: AnyObject) {
-        // TODO
+        let navigationController = storyboard?.instantiateViewControllerWithIdentifier("NCNewTweetViewController") as! UINavigationController
+        
+        // NewTweetViewController is the top view controller of the naviagtion controller
+        let newTweetViewController = navigationController.topViewController as! NewTweetViewController
+        
+        newTweetViewController.delegate = self
+        newTweetViewController.tweet = tweet
+        
+        presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func didTapRetweet(sender: AnyObject) {
@@ -77,4 +85,5 @@ class TweetDetailViewController: UIViewController {
             }
         }
     }
+
 }

@@ -204,7 +204,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="Y9i-2E-A7O">
                             <connections>
-                                <segue destination="j2q-Ep-wqB" kind="modal" id="b2w-p3-bXv"/>
+                                <segue destination="j2q-Ep-wqB" kind="modal" identifier="TweetComposeSegue" id="b2w-p3-bXv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -398,7 +398,7 @@
         <!--New Tweet View Controller-->
         <scene sceneID="sA9-j4-gL5">
             <objects>
-                <viewController id="IMH-8v-Q43" customClass="NewTweetViewController" customModule="twitterclone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewTweetViewController" id="IMH-8v-Q43" customClass="NewTweetViewController" customModule="twitterclone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nE6-zE-Bg5"/>
                         <viewControllerLayoutGuide type="bottom" id="bsY-Ke-sgK"/>
@@ -491,7 +491,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cg8-vS-33e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j2q-Ep-wqB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NCNewTweetViewController" automaticallyAdjustsScrollViewInsets="NO" id="j2q-Ep-wqB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Edo-5o-UHf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

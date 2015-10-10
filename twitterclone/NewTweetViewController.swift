@@ -20,6 +20,7 @@ class NewTweetViewController: UIViewController {
     @IBOutlet weak var tweetTextView: UITextView!
     
     weak var delegate: NewTweetViewControllerDelegate?
+    var tweet: Tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,12 @@ class NewTweetViewController: UIViewController {
         userImageView.setImageWithURL(NSURL(string: user.biggerProfileImageUrl!))
         nameLabel.text = user.name!
         usernameLabel.text = user.screenName!
+        
+        if tweet != nil {
+            tweetTextView.text = "@\(tweet!.user!.screenName!) "
+        }
+        
+        tweetTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +50,7 @@ class NewTweetViewController: UIViewController {
         let status = tweetTextView.text
         
         if status != nil {
-            TwitterClient.instance.tweetWithParams(status, completion: { (tweet, error) -> () in
+            TwitterClient.instance.tweetWithParams(status, replyTweetId: tweet?.idStr, completion: { (tweet, error) -> () in
                 if tweet != nil {
                     // Success
                     self.delegate?.newTweetViewController?(self, didTweet: tweet!)

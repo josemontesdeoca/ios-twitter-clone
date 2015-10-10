@@ -93,8 +93,12 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
-    func tweetWithParams(status: String, completion:(tweet: Tweet?, error: NSError?) -> ()) {
-        let params = ["status": status]
+    func tweetWithParams(status: String, replyTweetId: String?, completion:(tweet: Tweet?, error: NSError?) -> ()) {
+        var params = ["status": status]
+        
+        if replyTweetId != nil {
+            params["in_reply_to_status_id"] = replyTweetId!
+        }
         
         POST(twitterTweetUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let tweet = Tweet(dictionary: response as! NSDictionary)
