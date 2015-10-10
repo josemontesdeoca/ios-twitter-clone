@@ -19,6 +19,8 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var favoritesCountLabel: UILabel!
     @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
     
     var tweet: Tweet!
 
@@ -32,6 +34,9 @@ class TweetDetailViewController: UIViewController {
         
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
+        
+        favoriteButton.setImage(UIImage(named: tweet.favorited! ? "favoriteOn" : "favorite"), forState: .Normal)
+        retweetButton.setImage(UIImage(named: tweet.retweeted! ? "retweetOn" : "retweet"), forState: .Normal)
         
         retweetsCountLabel.text = "\(tweet.retweetCount!)"
         favoritesCountLabel.text = "\(tweet.favoriteCount!)"
@@ -48,10 +53,28 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func didTapRetweet(sender: AnyObject) {
-        // TODO
+        print("Retweet tap")
+        tweet.retweet { (tweet, error) -> () in
+            if tweet != nil {
+                self.tweet = tweet!
+                self.retweetsCountLabel.text = "\(self.tweet.favoriteCount!)"
+                self.retweetButton.setImage(UIImage(named: self.tweet.retweeted! ? "retweetOn" : "retweet"), forState: .Normal)
+            } else {
+                // handle error
+            }
+        }
     }
     
     @IBAction func didTapFavorite(sender: AnyObject) {
-        // TODO
+        print("favorite tap")
+        tweet.updateFavorite { (tweet, error) -> () in
+            if tweet != nil {
+                self.tweet = tweet!
+                self.favoritesCountLabel.text = "\(self.tweet.favoriteCount!)"
+                self.favoriteButton.setImage(UIImage(named: self.tweet.favorited! ? "favoriteOn" : "favorite"), forState: .Normal)
+            } else {
+                // handle error
+            }
+        }
     }
 }

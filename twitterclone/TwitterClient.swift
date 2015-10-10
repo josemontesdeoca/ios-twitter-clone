@@ -19,6 +19,9 @@ private let twitterAuthenticateUrl = "https://api.twitter.com/oauth/authenticate
 private let twitterVerifyCredentialsUrl = "1.1/account/verify_credentials.json"
 private let twitterHomeTimelineUrl = "1.1/statuses/home_timeline.json"
 private let twitterTweetUrl = "1.1/statuses/update.json"
+private let twitterCreateFavoriteUrl = "1.1/favorites/create.json"
+private let twitterDestroyFavoriteUrl = "1.1/favorites/destroy.json"
+private let twitterRetweetUrl = "1.1/statuses/retweet/"
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
     
@@ -84,9 +87,9 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         GET(twitterHomeTimelineUrl, parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
             completion(tweets: tweets, error: nil)
-            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                print("Error getting home timeline!")
-                completion(tweets: nil, error: error)
+        }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("Error getting home timeline!")
+            completion(tweets: nil, error: error)
         })
     }
     
@@ -96,9 +99,45 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         POST(twitterTweetUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let tweet = Tweet(dictionary: response as! NSDictionary)
             completion(tweet: tweet, error: nil)
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                print("Error tweeting!")
-                completion(tweet: nil, error: error)
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("Error tweeting!")
+            completion(tweet: nil, error: error)
+        }
+    }
+    
+    func createFavorite(tweetId: String, completion:(tweet: Tweet?, error: NSError?) -> ()) {
+        let params: [String : AnyObject] = ["id": tweetId]
+        
+        POST(twitterCreateFavoriteUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("Error favoriting a tweet!")
+            completion(tweet: nil, error: error)
+        }
+    }
+    
+    func destroyFavorite(tweetId: String, completion:(tweet: Tweet?, error: NSError?) -> ()) {
+        let params: [String : AnyObject] = ["id": tweetId]
+        
+        POST(twitterDestroyFavoriteUrl, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("Error removing favoriting on a tweet!")
+            completion(tweet: nil, error: error)
+        }
+    }
+    
+    func retweet(tweetId: String, completion:(tweet: Tweet?, error: NSError?) -> ()) {
+        let url = twitterRetweetUrl + "\(tweetId).json"
+        
+        POST(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("Error retweeting a tweet!")
+            completion(tweet: nil, error: error)
         }
     }
 }

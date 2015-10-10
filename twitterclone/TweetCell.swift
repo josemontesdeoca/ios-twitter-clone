@@ -17,6 +17,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var favoriteLabel: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var tweet: Tweet! {
         didSet {
@@ -28,6 +30,8 @@ class TweetCell: UITableViewCell {
             retweetLabel.text = tweet.retweetCount! > 0 ? "\(tweet.retweetCount!)" : ""
             favoriteLabel.text = tweet.favoriteCount! > 0 ? "\(tweet.favoriteCount!)" : ""
             createdAtLabel.text = formatTimeElapsed(tweet.createdAt!)
+            favoriteButton.setImage(UIImage(named: tweet.favorited! ? "favoriteOn" : "favorite"), forState: .Normal)
+            retweetButton.setImage(UIImage(named: tweet.retweeted! ? "retweetOn" : "retweet"), forState: .Normal)
         }
     }
     
