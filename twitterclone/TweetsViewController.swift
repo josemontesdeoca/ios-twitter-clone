@@ -27,6 +27,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tweetTableView.dataSource = self
         tweetTableView.rowHeight = UITableViewAutomaticDimension
         tweetTableView.estimatedRowHeight = 100
+        
+        let tweetCellNib = UINib(nibName: "TweetView", bundle: NSBundle.mainBundle())
+        tweetTableView.registerNib(tweetCellNib, forCellReuseIdentifier: "TweetCell")
 
         TwitterClient.instance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
@@ -70,6 +73,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tweetTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let tweet = tweets![indexPath.row]
+        
+        
+        // NewTweetViewController is the top view controller of the naviagtion controller
+        let tweetDetailViewController = storyboard?.instantiateViewControllerWithIdentifier("TweetDetailViewController") as! TweetDetailViewController
+        
+        tweetDetailViewController.tweet = tweet
+        tweetDetailViewController.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(tweetDetailViewController, animated: true)
+        
         self.view.endEditing(true)
     }
     
@@ -80,26 +95,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let navigationController = segue.destinationViewController as! UINavigationController
         
-        if segue.identifier == "TweetDetailSegue" {
-            let cell = sender as! UITableViewCell
-            let indexPath = tweetTableView.indexPathForCell(cell)!
-            
-            let tweet = tweets![indexPath.row]
-            
-            let tweetDetailViewController = segue.destinationViewController as! TweetDetailViewController
-            
-            tweetDetailViewController.tweet = tweet
-            tweetDetailViewController.hidesBottomBarWhenPushed = true
-        } else {
-            let navigationController = segue.destinationViewController as! UINavigationController
-            
-            // NewTweetViewController is the top view controller of the naviagtion controller
-            let newTweetViewController = navigationController.topViewController as! NewTweetViewController
-            
-            newTweetViewController.delegate = self
-        }
+        // NewTweetViewController is the top view controller of the naviagtion controller
+        let newTweetViewController = navigationController.topViewController as! NewTweetViewController
         
+        newTweetViewController.delegate = self
     }
 
 }

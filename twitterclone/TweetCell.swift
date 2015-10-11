@@ -48,6 +48,22 @@ class TweetCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func didTapReply(sender: AnyObject) {
+        // TODO
+        print("user didTapReply")
+    }
+    
+    @IBAction func didTapRetweet(sender: AnyObject) {
+        // TODO
+        print("user didTapRetweet")
+    }
+    
+    @IBAction func didTapFavorite(sender: AnyObject) {
+        // TODO
+        print("user didTapFavorite")
+    }
+    
 
     func formatTimeElapsed(sinceDate: NSDate) -> String {
         let formatter = NSDateComponentsFormatter()

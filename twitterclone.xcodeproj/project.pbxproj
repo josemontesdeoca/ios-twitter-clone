@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43139E9F1BC9CC1100046A58 /* TweetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43139E9E1BC9CC1100046A58 /* TweetView.xib */; settings = {ASSET_TAGS = (); }; };
 		431761191BC1A4E5008F60D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431761181BC1A4E5008F60D2 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		4317611B1BC1A54F008F60D2 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317611A1BC1A54F008F60D2 /* Tweet.swift */; settings = {ASSET_TAGS = (); }; };
 		433C5EF81BBE388F004980AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C5EF71BBE388F004980AD /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43139E9E1BC9CC1100046A58 /* TweetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetView.xib; sourceTree = "<group>"; };
 		431761181BC1A4E5008F60D2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4317611A1BC1A54F008F60D2 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		433C5EF41BBE388F004980AD /* twitterclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitterclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				433C5EFB1BBE388F004980AD /* Main.storyboard */,
 				433C5EFE1BBE388F004980AD /* Assets.xcassets */,
 				433C5F001BBE388F004980AD /* LaunchScreen.storyboard */,
+				43139E9E1BC9CC1100046A58 /* TweetView.xib */,
 				433C5F031BBE388F004980AD /* Info.plist */,
 			);
 			path = twitterclone;
@@ -206,6 +209,7 @@
 			files = (
 				433C5F021BBE388F004980AD /* LaunchScreen.storyboard in Resources */,
 				433C5EFF1BBE388F004980AD /* Assets.xcassets in Resources */,
+				43139E9F1BC9CC1100046A58 /* TweetView.xib in Resources */,
 				433C5EFD1BBE388F004980AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
